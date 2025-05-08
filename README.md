@@ -10,9 +10,9 @@ I have experience in:
 - **C#** 💻
 - **HTML & JavaScript** 🌐
 
-##**Projects**
+## **Projects**
 
-##Text-Based RPG Project
+## Text-Based RPG Project
 
 This project is my way of combining creativity, logic, and code into a fun terminal-based adventure.
 
