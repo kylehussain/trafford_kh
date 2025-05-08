@@ -1,2 +1,2 @@
-# trafford_python_textrpg
-A python-based, text-based RPG for my college assignment
+# trafford_kh
+A repository for all my programming work for my college course
