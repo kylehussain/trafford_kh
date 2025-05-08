@@ -1,5 +1,7 @@
 # trafford_kh
 
+This repository contains all my programming projects for college or just little things i've made.
+
 ## 👨‍💻 About Me
 
 I'm a first-year college student studying **Cloud Computing**.  
@@ -10,7 +12,7 @@ I have experience in:
 
 ##**Projects**
 
-# Text-Based RPG Project
+##Text-Based RPG Project
 
 This project is my way of combining creativity, logic, and code into a fun terminal-based adventure.
 
