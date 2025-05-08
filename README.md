@@ -14,17 +14,13 @@ I have experience in:
 
 ## Text-Based RPG Project
 
-This project is my way of combining creativity, logic, and code into a fun terminal-based adventure.
+This project is for my Unit 4 Assignment 2 Programming Unit.
+It must be:
+- Text-Based or Graphic-Based
+- Contain at least 5 areas
+- Use commands or choices to move around
+- Include interactive objects (key, chest)
+- Player decisions should influence the storyline
+- Clear winning condition
 
-## 🕹️ Features
-
-- Interactive story-driven gameplay
-- Turn-based combat system
-- Inventory and stat management
-- Modular code for future expansions
-
-## 🚧 In Progress
-
-- Adding new quests and enemies
-- Saving and loading game states
-- Improving UI with clearer prompts
+**I have completed this assignment as of 08/05/25**
