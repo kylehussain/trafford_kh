@@ -9,6 +9,7 @@ gateKey = False #key to the gate
 lantern = False #lantern to light the cave
 questComplete = False #quest completion
 questFailed = False #quest failure
+questIncomplete = False #quest incomplete
 hermitMet = False #hermit meeting
 gateBeen = False #gate visit
 cabinBeen = False #cabin visit
@@ -512,13 +513,14 @@ def hermit(): #hermit scene
         hermitChoice()
 
 def hermitChoice(): #hermit choices
-    global niceguy
+    global questIncomplete
     choice = input("> ").strip()
     if choice == '1':
         typewriter("You nod at the Hermit, his face lights up with a smile.")
         hermitQuest()
     elif choice == '2':
         typewriter("The Hermit nods and waves you goodbye.")
+        questIncomplete = True
         forest()
     elif choice == '3':
         typewriter("The Hermit stares back in an epic staring contest...")
@@ -543,6 +545,7 @@ def hermitChoice(): #hermit choices
 def hermitQuest(): #hermit quest
     global questComplete
     global questFailed
+    global questIncomplete
     global hermitMet
     clear_screen()
     typewriter("Hermit: 'Im in a bit of a pickle really, I have this piece of paper..'")
@@ -554,6 +557,7 @@ def hermitQuest(): #hermit quest
     answer = int(input(f"It reads: 'What is...{a} x {b}?: '"))
     if answer == a * b:
         questComplete = True
+        questIncomplete = False
         hermitMet = False
         typewriter("You hand back the piece of paper with the answer written down.")
         typewriter("Hermit: 'I hope this is right, thank you'")
@@ -568,6 +572,7 @@ def hermitQuest(): #hermit quest
         answer = int(input(f"It reads: 'What is...{a} x {b}?: '"))
         if answer == a * b:
             questComplete = True
+            questIncomplete = False
             hermitMet = False
             typewriter("You hand back the piece of paper with the answer written down.")
             typewriter("Hermit: 'I hope this is right, thank you'")
@@ -577,6 +582,7 @@ def hermitQuest(): #hermit quest
             forest()    
         else:
             questFailed = True
+            questIncomplete = False
             hermitMet = False
             typewriter("You are still uncertain with your answer and deem it wrong once more.")
             typewriter("You ruined the Hermits paper.")
