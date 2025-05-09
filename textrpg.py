@@ -5,20 +5,20 @@ from random import randint
 import os
 import platform
 
-gateKey = False
-lantern = False
-questComplete = False
-questFailed = False
-hermitMet = False
-gateBeen = False
-cabinBeen = False
-forestBeen = False
+gateKey = False #key to the gate
+lantern = False #lantern to light the cave
+questComplete = False #quest completion
+questFailed = False #quest failure
+hermitMet = False #hermit meeting
+gateBeen = False #gate visit
+cabinBeen = False #cabin visit
+forestBeen = False #forest visit
 
-a, b = random.sample(range(1, 101), 2)
+a, b = random.sample(range(1, 101), 2) #random numbers for math questions
 
 riddles = [
     "Hermit: 'What has to be broken before you can use it?'",
-    "Hermit: 'I speak without a mouth and hear without ears. I have nobody, but I come alive with the wind. What am I?'",
+    "Hermit: 'I speak without a mouth and hear without ears. I have nobody, but I come alive with the wind. What am I?'", #additional feature, may include in a later version
     "Hermit: 'I’m tall when I’m young, and I’m short when I’m old. What am I?'",
     "Hermit: 'What can you break, even if you never pick it up or touch it?'",
     "Hermit: 'What is always in front of you but can’t be seen?'"
@@ -32,8 +32,8 @@ answers = [
     "future"
 ]
 
-def typewriter_random_riddle():
-    typewriter(random.choice(riddles))
+def print_random_riddle():
+    typewriter(random.choice(riddles)) #choose a random riddle
    
 def typewriter(message):
     for char in message:
@@ -42,22 +42,22 @@ def typewriter(message):
         time.sleep(0.02)
     print()
 
-def clear_screen():
-    if platform.system() == "Windows":
+def clear_screen(): #clears the screen
+    if platform.system() == "Windows": 
         os.system("cls")
     else:
         os.system("clear")
        
-def s():
+def s(): #short sleep
     time.sleep(1)
    
-def l():
+def l(): #long sleep
     time.sleep(2.5)  
    
-def rng():
+def rng(): #random number generator for luck based events
     return randint(1,10)
 
-def menu():
+def menu(): #main menu
     clear_screen()
     typewriter("Welcome to Textventure")
     typewriter("|| Main Menu ||")
@@ -78,7 +78,7 @@ def menu():
         typewriter("Invalid choice. Please try again.")
         menu()
 
-def settings():
+def settings(): #settings menu
     clear_screen()
     typewriter("Settings Menu (Decoration)")
     typewriter("[1] Sound")
@@ -100,7 +100,7 @@ def settings():
         typewriter("Invalid choice. Please try again.")
         settings()
 
-def cabin():
+def cabin(): #cabin scene
     global forestBeen
     if forestBeen == True: #visited forest already
         clear_screen()
@@ -124,16 +124,16 @@ def cabin():
         typewriter("[3] Inspect the table")
         cabinChoice()
    
-def cabinChoice():
-    global gateKey
+def cabinChoice(): #cabin choices
+    global gateKey 
     global forestBeen
-    if forestBeen == True:
+    if forestBeen == True: #visited forest already
         choice = input("> ").strip()
-        if choice == '1' and gateKey == False:
+        if choice == '1' and gateKey == False: #if the player has not found the key
             typewriter("You walk back out the cabin, as empty handed and unenlightened as when you stepped in.")
             l()
             forest()
-        elif choice == '1' and gateKey == True:
+        elif choice == '1' and gateKey == True: #if the player has found the key
             typewriter("*You walk back out the cabin*")
             l()
             forest()
@@ -142,7 +142,7 @@ def cabinChoice():
             l()
             cabinChoice()
         elif choice == '3':
-            if gateKey == True:
+            if gateKey == True: #if the player has already found the key
                 typewriter("The table is empty.")
                 l()
             else:
@@ -175,12 +175,12 @@ def cabinChoice():
             l()
             cabinChoice()
    
-def forest():
+def forest(): #forest scene
     global forestBeen
     global questComplete
     forestBeen = True
-    clear_screen()
-    if questFailed == True or questComplete == True:
+    clear_screen() 
+    if questFailed == True or questComplete == True: #completed or failed quest
         typewriter("You no longer see the Hermit beside the tree.")
         typewriter("You see a path further into the forest.")
         typewriter("You see the path back to the cabin")
@@ -188,7 +188,7 @@ def forest():
         typewriter("[1] Travel deeper into the forest")
         typewriter("[2] Go back to the cabin")
         forestChoice()
-    elif gateBeen == True and hermitMet == True:
+    elif gateBeen == True and hermitMet == True: #already met hermit and visited the gate
         typewriter("You walk away from the Hermit")
         typewriter("The winding path into the forest stares at you.")
         typewriter("What do you want to do?")
@@ -206,7 +206,7 @@ def forest():
         forestChoice()
 
        
-    if questFailed == True or questComplete == True:
+    if questFailed == True or questComplete == True: #completed or failed quest
         typewriter("You no longer see the Hermit beside the tree.")
         typewriter("You see a path further into the forest.")
         typewriter("You see the path back to the cabin")
@@ -214,7 +214,7 @@ def forest():
         typewriter("[1] Travel deeper into the forest")
         typewriter("[2] Go back to the cabin")
         forestChoice()
-    elif gateBeen == False and hermitMet == True:
+    elif gateBeen == False and hermitMet == True: #already met hermit and visited the gate
         typewriter("You walk away from the Hermit")
         typewriter("The winding path into the forest stares at you.")
         typewriter("What do you want to do?")
@@ -234,11 +234,9 @@ def forest():
    
    
    
-def forestChoice():
-    choice = input("> ").strip()
-
-    # Completed or failed quest: Hermit is gone
-    if questFailed or questComplete:
+def forestChoice(): #forest choices
+    choice = input("> ").strip() 
+    if questFailed or questComplete:   # Already completed or failed quest
         if choice == '1':
             typewriter("*You travel deeper into the forest*")
             l()
@@ -251,9 +249,7 @@ def forestChoice():
             typewriter("Invalid choice. Please try again.")
             l()
             forestChoice()
-
-    # Already met Hermit but quest not yet finished
-    elif hermitMet:
+    elif hermitMet:     # Already met Hermit but quest not yet finished
         if choice == '1':
             typewriter("*You approach the Hermit again*")
             l()
@@ -270,9 +266,7 @@ def forestChoice():
             typewriter("Invalid choice. Please try again.")
             l()
             forestChoice()
-
-    # First-time encounter
-    else:
+    else:     # First-time encounter
         if choice == '1':
             typewriter("*You approach the man and he introduces himself as a Hermit...*")
             l()
@@ -291,13 +285,13 @@ def forestChoice():
             forestChoice()
 
 
-def lockedGate():
+def lockedGate(): #locked gate scene
     global gateKey
     global gateBeen
     clear_screen()
     gateBeen = True
     typewriter("You approach the locked gate.")
-    if gateKey == True:
+    if gateKey == True: #if the player has found the key
         typewriter("You remember the mysterious key you picked up from the table in the cabin.")
         typewriter("You unlock the gate")
         typewriter("What do you want to do?")
@@ -312,7 +306,7 @@ def lockedGate():
             typewriter("You decide you aren't ready for what lies ahead the gate and head back through the forest.")
             l()
             forest()
-    elif gateKey == False:
+    elif gateKey == False: #if the player has not found the key
         typewriter("You rattle the gate back and forth to no avail.")
         typewriter("You do however notice a small keyhole in the gate.")
         typewriter("Perhaps there is a key for this somewhere, you tell yourself.")
@@ -320,7 +314,7 @@ def lockedGate():
         l()
         forest()
              
-def cave():
+def cave(): #cave scene
     clear_screen()
     typewriter("After what seems to have been a millenia, you find yourself standing infront of the large cave opening.")
     typewriter("The sounds you hear are ungodly. You take a step back.")
@@ -331,22 +325,22 @@ def cave():
     typewriter("[3] Quit the Game...")
     caveChoice()
 
-def lanternOut():
+def lanternOut(): #lantern out scene
     clear_screen()
     typewriter("You wait a while to gather your bearings before re-lighting the lantern.")
     typewriter("*You venture back into the cave*")
     l()
     caveDeeper()
 
-def caveChoice():
+def caveChoice(): #cave choices
     global lantern
     choice = input("> ").strip()
-    if choice == '1' and lantern == False:
+    if choice == '1' and lantern == False: #if the player has not found the lantern
         typewriter("You think the cave is too dark and go back through the forest..")
         typewriter("Maybe you can find a light source to use in the cave..")
         l()
         forest()
-    elif choice == '1' and lantern == True:
+    elif choice == '1' and lantern == True: #if the player has found the lantern
         typewriter("*You take a deep breath*..and carefully venture into the cave..")
         l()
         caveDeeper()
@@ -363,7 +357,7 @@ def caveChoice():
         caveChoice()
 
 
-def caveDeeper():
+def caveDeeper(): #cave deeper scene
     typewriter("After some time, you grow tired of the steady, cold breeze of the cave..")
     typewriter("Your lantern begins to flicker madly. You pray it doesn't go out.")
     if rng() < 3:
@@ -380,7 +374,7 @@ def caveDeeper():
         lanternOut()
        
        
-def puzzleRoom():
+def puzzleRoom(): #puzzle room scene
     clear_screen()
     typewriter("You find yourself infront of a large ornate door.")
     typewriter("There are ancient inscriptions etched into the door, with a small stone that emanated the light you saw earlier.")
@@ -399,7 +393,7 @@ def puzzleRoom():
         puzzleRoomHard()
          
        
-def puzzleRoomEasy():
+def puzzleRoomEasy(): #puzzle room easy scene
     clear_screen()
     typewriter("A man steps out from the darkness.")
     typewriter("He is carrying a large wooden stick with a small stone atop..similar to the stone in the door.")
@@ -435,7 +429,7 @@ def puzzleRoomEasy():
             typewriter("Game Over! Dyscalculia Ending.")
             exit()
            
-def puzzleRoomHard():
+def puzzleRoomHard(): #puzzle room hard scene
     clear_screen()
     typewriter("A man steps out from the darkness.")
     typewriter("He is carrying a large wooden stick with a small stone atop..similar to the stone in the door.")
@@ -466,7 +460,7 @@ def puzzleRoomHard():
         typewriter("Game Over! Bad Ending.")
         exit()
        
-def ancientShrine():
+def ancientShrine(): #ancient shrine scene
     clear_screen()
     typewriter("A single high soprano wakes you up..")
     typewriter("Others joined—altos, tenors, and deep, resonant basses.")
@@ -491,11 +485,11 @@ def ancientShrine():
     exit()
    
    
-def hermit():
+def hermit(): #hermit scene
     global lantern
     global hermitMet
     clear_screen()
-    if hermitMet == False:
+    if hermitMet == False: #first time meeting the hermit
         typewriter("Hermit: 'Hi there! I was wondering when you would wake up.'")
         typewriter("Hermit: 'You've been asleep for a long time.'")
         typewriter("Hermit: 'It's dark out, have this lantern.'")
@@ -517,7 +511,7 @@ def hermit():
         typewriter("[3] Stare")
         hermitChoice()
 
-def hermitChoice():
+def hermitChoice(): #hermit choices
     global niceguy
     choice = input("> ").strip()
     if choice == '1':
@@ -546,7 +540,7 @@ def hermitChoice():
         typewriter("Invalid choice. Please try again.")
         hermitChoice()
 
-def hermitQuest():
+def hermitQuest(): #hermit quest
     global questComplete
     global questFailed
     global hermitMet
@@ -596,7 +590,7 @@ def hermitQuest():
        
    
 
-def main():
+def main(): #main function
     menu()
    
 main()
