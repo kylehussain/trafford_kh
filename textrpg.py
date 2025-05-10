@@ -363,12 +363,20 @@ def caveChoice(): #cave choices
 def caveDeeper(): #cave deeper scene
     typewriter("After some time, you grow tired of the steady, cold breeze of the cave..")
     typewriter("Your lantern begins to flicker madly. You pray it doesn't go out.")
+    
     if rng() < 3:
-            typewriter("The gods have answered your prayers and your lantern holds on for dear life.")
-            typewriter("You see a faint light in the distance. Hope is restored..")
-            typewriter("*You make your way towards the light*")
-            l()
-            puzzleRoom()
+        luck = luck + 1
+        typewriter("The gods have answered your prayers and your lantern holds on for dear life.")
+        typewriter("You see a faint light in the distance. Hope is restored..")
+        typewriter("*You make your way towards the light*")
+        l()
+        puzzleRoom()
+    elif luck == 3:
+        typewriter("The gods have answered your prayers and your lantern holds on for dear life.")
+        typewriter("You see a faint light in the distance. Hope is restored..")
+        typewriter("*You make your way towards the light*")
+        l()
+        puzzleRoom()
     else:
         typewriter("The cave sends out a fierce breeze")
         typewriter("Your lantern gets extinguished")
@@ -400,12 +408,7 @@ def puzzleRoom(): #puzzle room scene
        
 def puzzleRoomEasy(): #puzzle room easy scene
     clear_screen()
-    typewriter("A man steps out from the darkness.")
-    typewriter("He is carrying a large wooden stick with a small stone atop..similar to the stone in the door.")
-    typewriter("He seems somewhat familiar...")
-    typewriter("It's the Hermit you helped before!")
     l()
-    clear_screen()
     typewriter("Hermit: 'Greetings Adventurer...Its wonderful to see you again.'")
     typewriter("Hermit: 'Because you helped me before, I am only required to ask you one simple question...'")
     typewriter("Hermit: 'Are you ready?'")
@@ -436,12 +439,7 @@ def puzzleRoomEasy(): #puzzle room easy scene
            
 def puzzleRoomHard(): #puzzle room hard scene
     clear_screen()
-    typewriter("A man steps out from the darkness.")
-    typewriter("He is carrying a large wooden stick with a small stone atop..similar to the stone in the door.")
-    typewriter("He seems somewhat familiar...")
-    typewriter("But you can't put your finger on it..")
     l()
-    clear_screen()
     typewriter("Hermit: 'Greetings Adventurer...I am the Hermit.'")
     typewriter("Hermit: 'I remember you declining my request for aid. Therefore to pass you must answer a trivial question.'")
     typewriter("Hermit: 'Are you ready?'")
