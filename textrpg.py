@@ -350,6 +350,8 @@ def caveChoice(): #cave choices
         l()
         forest()
     elif choice == '3':
+        typewriter("You think about quitting the game...")
+        typewriter("Game Over! Scaredy Cat Ending.")
         l()
         exit()
     else:
