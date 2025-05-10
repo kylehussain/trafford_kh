@@ -197,7 +197,7 @@ def forest(): #forest scene
         typewriter("[2] Travel deeper into the forest")
         typewriter("[3] Go back to the cabin")
         forestChoice()
-    else:
+    else: #first time meeting the hermit
         typewriter("You see a man standing beside a tree, He looks up and smiles at you.")
         typewriter("You see a path further into the forest")
         typewriter("What do you want to do?")
@@ -223,7 +223,7 @@ def forest(): #forest scene
         typewriter("[2] Travel deeper into the forest")
         typewriter("[3] Go back to the cabin")
         forestChoice()
-    else:
+    else: #first time meeting the hermit
         typewriter("You see a man standing beside a tree, He looks up and smiles at you.")
         typewriter("You see a path further into the forest")
         typewriter("What do you want to do?")
@@ -391,6 +391,8 @@ def puzzleRoom(): #puzzle room scene
     if questComplete == True:
         puzzleRoomEasy()
     if questFailed == True:
+        puzzleRoomHard()
+    if questIncomplete == True:
         puzzleRoomHard()
          
        
