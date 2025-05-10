@@ -459,6 +459,7 @@ def puzzleRoomHard(): #puzzle room hard scene
         typewriter("*Your vision starts to fade*")
         typewriter("*You lose sensation in your body*")
         l()
+        l()
         clear_screen()
         typewriter("Game Over! Bad Ending.")
         exit()
@@ -470,17 +471,20 @@ def ancientShrine(): #ancient shrine scene
     typewriter("Each voice folding into the next like ripples on a still lake.")
     typewriter("The song wasn't in any mortal tongue..Yet its meaning flowed straight to your heart.")
     l()
+    l()
     clear_screen()
     typewriter("You instantly regain the strength to stand...although you don't remember being on the floor.")
     typewriter("You take a glance of the surroundings.")
     typewriter("There stands four tall pillars surrounding a smaller pillar in the center.")
     typewriter("Tapestries and goldleaf furnish the walls of the dimly lit stone room.")
     l()
+    l()
     clear_screen()
     typewriter("You approch the center of the pillars.")
     typewriter("A pool of rejuvination stands before you.")
     typewriter("You instinctly drink from the pool")
     typewriter("Vigour flows through your body.")
+    l()
     l()
     clear_screen()
     typewriter("Game Over! Adventurers' Ending.")
@@ -519,9 +523,11 @@ def hermitChoice(): #hermit choices
     choice = input("> ").strip()
     if choice == '1':
         typewriter("You nod at the Hermit, his face lights up with a smile.")
+        l()
         hermitQuest()
     elif choice == '2':
         typewriter("The Hermit nods and waves you goodbye.")
+        l()
         questIncomplete = True
         forest()
     elif choice == '3':
@@ -531,7 +537,9 @@ def hermitChoice(): #hermit choices
             typewriter("You break the stare, losing the staring contest.")
             typewriter("All of a sudden, pressure builds in your head.")
             typewriter("You being to lose consciousness...")
-            typewriter("*Your head explodes...Game Over*")
+            typewriter("*Your head explodes...*")
+            typewriter("Game Over! Random Ending!.")
+            l()
             l()
             exit()
         else:
@@ -571,6 +579,7 @@ def hermitQuest(): #hermit quest
         typewriter("You think the answer doesn't look quite right and decide to scribble it out and write another.")
         typewriter("There isn't much space left on the paper, you think one more attempt is enough.")
         typewriter("You read the paper properly once more.")
+        l()
         answer = int(input(f"It reads: 'What is...{a} x {b}?: '"))
         if answer == a * b:
             questComplete = True
