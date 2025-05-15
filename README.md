@@ -1,26 +1,14 @@
-# trafford_kh
+# 🧭 Textventure
 
-This repository contains all my programming projects for college or just little things i've made.
+**Textventure** is a Python-powered, text-based adventure game. Embark on a mysterious journey through forests, cabins, and ancient caves. Solve riddles, unlock gates, and make choices that shape your fate. Will you reach the Adventurer’s Ending—or fall victim to your decisions?
 
-## 👨‍💻 About Me
+---
 
-I'm a first-year college student studying **Cloud Computing**.  
-I have experience in:
-- **Python** 🐍
-- **C#** 💻
-- **HTML & JavaScript** 🌐
+## 🎮 Features
 
-## **Projects**
-
-## Text-Based RPG Project
-
-This project is for my Unit 4 Assignment 2 Programming Unit.
-It must be:
-- Text-Based or Graphic-Based
-- Contain at least 5 areas
-- Use commands or choices to move around
-- Include interactive objects (key, chest)
-- Player decisions should influence the storyline
-- Clear winning condition
-
-**I have completed this assignment as of 08/05/25**
+- 🗺️ **Exploration:** Traverse through a mysterious forest, eerie cabin, locked gate, and a haunting cave.
+- 🔐 **Inventory Items:** Collect keys and lanterns to unlock paths and illuminate dark places.
+- 🔄 **Dynamic Choices:** Game state evolves based on your actions and item discoveries.
+- ❓ **Riddles & Puzzles:** Solve riddles posed by a Hermit and math-based puzzles to progress.
+- 🎲 **Luck Mechanic:** Random events influenced by a luck system that affects outcomes.
+- 🧙 **Multiple Endings:** Your choices determine which ending you unlock.
