@@ -5,7 +5,6 @@ from random import randint
 import os
 import platform
 
-BadLuckMitigation = 0
 gateKey = False #key to the gate
 lantern = False #lantern to light the cave
 questComplete = False #quest completion
@@ -41,7 +40,7 @@ def typewriter(message):
     for char in message:
         sys.stdout.write(char)
         sys.stdout.flush()
-        time.sleep(0.02)
+        time.sleep(0.05)
     print()
 
 def clear_screen(): #clears the screen
@@ -56,10 +55,21 @@ def s(): #short sleep
 def l(): #long sleep
     time.sleep(2.5)  
 
-class LuckSystem: #lucks system for random events or rng mechanics
-    @staticmethod   
-    def rng(): 
-        return randint(1,10)
+class LuckSystem:
+    def __init__(self):
+        self.base_chance = 0.2  # starts at 20%
+        self.max_chance = 0.9   # caps at 90%
+
+    def roll(self):
+        chance = min(self.base_chance, self.max_chance)
+        if random() < chance:
+            self.base_chance = 0.2  # reset on success
+            return True
+        else:
+            self.base_chance = min(self.base_chance + 0.2, self.max_chance)
+            return False
+        
+luck = LuckSystem()
 
 def menu(): #main menu
     clear_screen()
@@ -371,18 +381,10 @@ def caveChoice(): #cave choices
 
 
 def caveDeeper(): #cave deeper scene
-    global BadLuckMitigation
     clear_screen()
     typewriter("After some time, you grow tired of the steady, cold breeze of the cave..")
     typewriter("Your lantern begins to flicker madly. You pray it doesn't go out.")
-    if LuckSystem.rng() < 3: #implemented luck based on testing reflection
-        BadLuckMitigation += 1
-        typewriter("The gods have answered your prayers and your lantern holds on for dear life.")
-        typewriter("You see a faint light in the distance. Hope is restored..")
-        typewriter("You make your way towards the light")
-        l()
-        puzzleRoom()
-    elif BadLuckMitigation == 3:
+    if luck.roll(): #implemented luck based on testing reflection
         typewriter("The gods have answered your prayers and your lantern holds on for dear life.")
         typewriter("You see a faint light in the distance. Hope is restored..")
         typewriter("You make your way towards the light")
@@ -544,7 +546,7 @@ def hermitChoice(): #hermit choices
         forest()
     elif choice == '3':
         typewriter("The Hermit stares back in an epic staring contest...")
-        if LuckSystem.rng() < 3:
+        if luck.roll(): #implemented luck based on testing reflection
             typewriter("You break the stare, losing the staring contest.")
             typewriter("All of a sudden, pressure builds in your head.")
             typewriter("You being to lose consciousness...")
