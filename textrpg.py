@@ -5,6 +5,7 @@ from random import randint
 import os
 import platform
 
+BadLuckMitigation = 0
 gateKey = False #key to the gate
 lantern = False #lantern to light the cave
 questComplete = False #quest completion
@@ -54,9 +55,11 @@ def s(): #short sleep
    
 def l(): #long sleep
     time.sleep(2.5)  
-   
-def rng(): #random number generator for luck based events
-    return randint(1,10)
+
+class LuckSystem: #lucks system for random events or rng mechanics
+    @staticmethod   
+    def rng(): 
+        return randint(1,10)
 
 def menu(): #main menu
     clear_screen()
@@ -361,17 +364,17 @@ def caveChoice(): #cave choices
 
 
 def caveDeeper(): #cave deeper scene
+    global BadLuckMitigation
     typewriter("After some time, you grow tired of the steady, cold breeze of the cave..")
     typewriter("Your lantern begins to flicker madly. You pray it doesn't go out.")
-    
-    if rng() < 3:
-        luck = luck + 1
+    if LuckSystem.rng() < 3: #implemented luck based on testing reflection
+        BadLuckMitigation += 1
         typewriter("The gods have answered your prayers and your lantern holds on for dear life.")
         typewriter("You see a faint light in the distance. Hope is restored..")
         typewriter("*You make your way towards the light*")
         l()
         puzzleRoom()
-    elif luck == 3:
+    elif BadLuckMitigation == 3:
         typewriter("The gods have answered your prayers and your lantern holds on for dear life.")
         typewriter("You see a faint light in the distance. Hope is restored..")
         typewriter("*You make your way towards the light*")
@@ -520,6 +523,7 @@ def hermit(): #hermit scene
 
 def hermitChoice(): #hermit choices
     global questIncomplete
+    global BadLuckMitigation
     choice = input("> ").strip()
     if choice == '1':
         typewriter("You nod at the Hermit, his face lights up with a smile.")
@@ -532,8 +536,7 @@ def hermitChoice(): #hermit choices
         forest()
     elif choice == '3':
         typewriter("The Hermit stares back in an epic staring contest...")
-        rng()
-        if rng() < 3:
+        if LuckSystem.rng() < 3:
             typewriter("You break the stare, losing the staring contest.")
             typewriter("All of a sudden, pressure builds in your head.")
             typewriter("You being to lose consciousness...")
