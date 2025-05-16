@@ -75,7 +75,7 @@ class LuckSystem:
             return False
 
 def show_luck_meter():
-    attempts = LuckSystem.attempts
+    attempts = LuckSystem.bad_luck_streak
     chance = min(0.3 + 0.15 * attempts, 0.9)
     meter_blocks = int(chance * 10)
     meter = "[" + "#" * meter_blocks + "-" * (10 - meter_blocks) + "]"
