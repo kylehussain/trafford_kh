@@ -8,7 +8,6 @@ from random import randint
 import os
 import platform
 
-BadLuckMitigation = 0
 gateKey = False #key to the gate
 lantern = False #lantern to light the cave
 questComplete = False #quest completion
@@ -394,7 +393,6 @@ def caveChoice(): #cave choices
 
 
 def caveDeeper(): #cave deeper scene
-    global BadLuckMitigation
     clear_screen()
     typewriter("After some time, you grow tired of the steady, cold breeze of the cave..")
     typewriter("Your lantern begins to flicker madly. You pray it doesn't go out.")
