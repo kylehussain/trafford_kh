@@ -157,48 +157,38 @@ def cabinChoice(): #cabin choices
         choice = input("> ").strip()
         if choice == '1' and gateKey == False: #if the player has not found the key
             typewriter("You walk back out the cabin, as empty handed and unenlightened as when you stepped in.")
-            
             forest()
         elif choice == '1' and gateKey == True: #if the player has found the key
             typewriter("You walk back out the cabin")
-            
             forest()
         elif choice == '2':
             typewriter("Like before, you can't see much out as it's dark.")
-            
             cabinChoice()
         elif choice == '3':
             if gateKey == True: #if the player has already found the key
                 typewriter("The table is empty.")
-                
             else:
                 typewriter("You inspect the table and find a mysterious key")
                 typewriter("You should've looked here before, you tell yourself.")
-                
                 gateKey = True
                 cabinChoice()
         elif choice not in '1' or '2' or '3':
             typewriter("Invalid choice. Please try again.")
-            
             cabinChoice()
     else:
         choice = input("> ")
         if choice == '1':
             typewriter("You open the door and walk outside")
-            
             forest()
         elif choice == '2':
             typewriter("You look out the window, you can't see much as it's dark out")
-            
             cabinChoice()
         elif choice == '3':
             typewriter("You inspect the table and find a mysterious key")
             gateKey = True
-            
             cabinChoice()
         else:
             typewriter("Invalid choice. Please try again.")
-            
             cabinChoice()
    
 def forest(): #forest scene
@@ -270,49 +260,38 @@ def forestChoice(): #forest choices
     if questFailed or questComplete:   # Already completed or failed quest
         if choice == '1':
             typewriter("You travel deeper into the forest")
-            
             lockedGate()
         elif choice == '2':
             typewriter("You go back to the cabin")
-            
             cabin()
         else:
             typewriter("Invalid choice. Please try again.")
-            
             forestChoice()
     elif hermitMet:     # Already met Hermit but quest not yet finished
         if choice == '1':
             typewriter("You approach the Hermit again")
-            
             hermit()
         elif choice == '2':
             typewriter("You travel deeper into the forest")
-            
             lockedGate()
         elif choice == '3':
             typewriter("You go back to the cabin")
-            
             cabin()
         else:
             typewriter("Invalid choice. Please try again.")
-            
             forestChoice()
     else:     # First-time encounter
         if choice == '1':
             typewriter("You approach the man and he introduces himself as a Hermit...")
-            
             hermit()
         elif choice == '2':
             typewriter("You travel deeper into the forest and discover a locked gate")
-            
             lockedGate()
         elif choice == '3':
             typewriter("You go back to the cabin")
-            
             cabin()
         else:
             typewriter("Invalid choice. Please try again.")
-            
             forestChoice()
 
 
@@ -371,20 +350,16 @@ def caveChoice(): #cave choices
     if choice == '1' and lantern == False: #if the player has not found the lantern
         typewriter("You think the cave is too dark and go back through the forest..")
         typewriter("Maybe you can find a light source to use in the cave..")
-        
         forest()
     elif choice == '1' and lantern == True: #if the player has found the lantern
         typewriter("You take a deep breath..and carefully venture into the cave..")
-        
         caveDeeper()
     elif choice == '2':
         typewriter("You think you're not ready for the cave just yet and decide to go back through the forest.")
-        
         forest()
     elif choice == '3':
         typewriter("You think about quitting the game...")
         typewriter("Game Over! Scaredy Cat Ending.")
-        
         exit()
     else:
         typewriter("Invalid choice. Please try again.")
@@ -396,20 +371,16 @@ def caveDeeper(): #cave deeper scene
     clear_screen()
     typewriter("After some time, you grow tired of the steady, cold breeze of the cave..")
     typewriter("Your lantern begins to flicker madly. You pray it doesn't go out.")
-
-    show_luck_meter()
-
+    # show_luck_meter()
     if LuckSystem.rng(): #implemented luck based on testing reflection
         typewriter("The gods have answered your prayers and your lantern holds on for dear life.")
         typewriter("You see a faint light in the distance. Hope is restored..")
         typewriter("You make your way towards the light")
-        
         puzzleRoom()
     else:
         typewriter("The cave sends out a fierce breeze")
         typewriter("Your lantern gets extinguished")
         typewriter("You run out of the cave")
-        
         lanternOut()
        
        
@@ -420,7 +391,6 @@ def puzzleRoom(): #puzzle room scene
     typewriter("You run your fingers over the inscriptions")
     typewriter("You are hit with flashbacks of your time here")
     typewriter("Darkness floods your vision.")
-    
     clear_screen()
     typewriter("A man steps out from the darkness.")
     typewriter("He is carrying a large wooden stick with a small stone atop..similar to the stone in the door.")
@@ -436,17 +406,14 @@ def puzzleRoom(): #puzzle room scene
        
 def puzzleRoomEasy(): #puzzle room easy scene
     clear_screen()
-    
     typewriter("Hermit: 'Greetings Adventurer...Its wonderful to see you again.'")
     typewriter("Hermit: 'Because you helped me before, I am only required to ask you one simple question...'")
     typewriter("Hermit: 'Are you ready?'")
     typewriter("You nod your head")
-    
     clear_screen()
     answer = int(input(f"Hermit: 'What is...{a} + {b}?: '"))
     if answer == a + b:
         typewriter("Correct!")
-        
         ancientShrine()
     else:
         typewriter("Hermit: 'Come on now..Unfortunatley due to the power of cave you can only answer once more...'")
@@ -460,24 +427,20 @@ def puzzleRoomEasy(): #puzzle room easy scene
             typewriter("Hermit: 'I had high hopes for you.'")
             typewriter("Your vision starts to fade")
             typewriter("You lose sensation in your body")
-            
             clear_screen()
             typewriter("Game Over! Dyscalculia Ending.")
             exit()
            
 def puzzleRoomHard(): #puzzle room hard scene
     clear_screen()
-    
     typewriter("Hermit: 'Greetings Adventurer...I am the Hermit.'")
     typewriter("Hermit: 'I remember you declining my request for aid. Therefore to pass you must answer a trivial question.'")
     typewriter("Hermit: 'Are you ready?'")
     typewriter("You nod your head")
-    
     clear_screen()
     answer = int(input(f"Hermit: 'What is...{a} x {b}?: '"))
     if answer == a * b:
         typewriter("Correct!")
-        
         ancientShrine()
     else:
         typewriter("Hermit: 'The cave has noted your insolence...'")
@@ -486,8 +449,6 @@ def puzzleRoomHard(): #puzzle room hard scene
         typewriter("Hermit: 'You are banished!'")
         typewriter("Your vision starts to fade")
         typewriter("You lose sensation in your body")
-        
-        
         clear_screen()
         typewriter("Game Over! Bad Ending.")
         exit()
@@ -498,25 +459,18 @@ def ancientShrine(): #ancient shrine scene
     typewriter("Others joined—altos, tenors, and deep, resonant basses.")
     typewriter("Each voice folding into the next like ripples on a still lake.")
     typewriter("The song wasn't in any mortal tongue..Yet its meaning flowed straight to your heart.")
-    
-    
     clear_screen()
     typewriter("You instantly regain the strength to stand...although you don't remember being on the floor.")
     typewriter("You take a glance of the surroundings.")
     typewriter("There stands four tall pillars surrounding a smaller pillar in the center.")
     typewriter("Tapestries and goldleaf furnish the walls of the dimly lit stone room.")
-    
-    
     clear_screen()
     typewriter("You approch the center of the pillars.")
     typewriter("A pool of rejuvination stands before you.")
     typewriter("You instinctly drink from the pool")
     typewriter("Vigour flows through your body.")
-    
-    
     clear_screen()
     typewriter("Game Over! Adventurers' Ending.")
-    
     exit()
    
    
@@ -552,11 +506,9 @@ def hermitChoice(): #hermit choices
     choice = input("> ").strip()
     if choice == '1':
         typewriter("You nod at the Hermit, his face lights up with a smile.")
-        
         hermitQuest()
     elif choice == '2':
         typewriter("The Hermit nods and waves you goodbye.")
-        
         questIncomplete = True
         forest()
     elif choice == '3':
@@ -567,14 +519,11 @@ def hermitChoice(): #hermit choices
             typewriter("You being to lose consciousness...")
             typewriter("Your head explodes...")
             typewriter("Game Over! Random Ending!.")
-            
-            
             exit()
         else:
             typewriter("The Hermit breaks his stare, You win the staring contest.")
             typewriter("You feel sudden relief, like the weight of the world has left your head.")
             typewriter("You don't spend another second thinking what might've happened if you'd have lost.")
-            
             hermitChoice()
     else:
         typewriter("Invalid choice. Please try again.")
@@ -589,7 +538,6 @@ def hermitQuest(): #hermit quest
     typewriter("Hermit: 'Im in a bit of a pickle really, I have this piece of paper..'")
     typewriter("Hermit: 'Im told it's really important but I can't quite figure out what it says'")
     typewriter("Hermit: 'It's in these strange runic symbols..Maybe you can help me?'")
-    
     clear_screen()
     typewriter("The Hermit hands you a piece of paper and a pen.")
     answer = int(input(f"It reads: 'What is...{a} x {b}?: '"))
@@ -601,7 +549,6 @@ def hermitQuest(): #hermit quest
         typewriter("Hermit: 'I hope this is right, thank you'")
         typewriter("You recieve a warm handshake and some pride.")
         typewriter("The Hermit vanishes infront of your eyes.")
-        
         forest()    
     else:
         typewriter("You think the answer doesn't look quite right and decide to scribble it out and write another.")
@@ -617,7 +564,6 @@ def hermitQuest(): #hermit quest
             typewriter("Hermit: 'I hope this is right, thank you'")
             typewriter("You recieve a warm handshake and some pride.")
             typewriter("The Hermit vanishes infront of your eyes.")
-            
             forest()    
         else:
             questFailed = True
@@ -627,10 +573,8 @@ def hermitQuest(): #hermit quest
             typewriter("You ruined the Hermits paper.")
             typewriter("You give him back the pen and paper.")
             typewriter("The Hermit looks disappointed.")
-            
             clear_screen()
             typewriter("Hermit: 'It's okay, You tried your best'")
-            
             forest()  
        
    
