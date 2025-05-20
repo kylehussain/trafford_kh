@@ -64,8 +64,7 @@ class LuckSystem:
     @staticmethod
     def rng():
         base_chance = 0.3  # 30% chance to succeed initially
-        # Increase chance by 20% per bad streak, maxing at 90%
-        adjusted_chance = min(base_chance + 0.2 * LuckSystem.bad_luck_streak, 0.9)
+        adjusted_chance = min(base_chance + 0.2 * LuckSystem.bad_luck_streak, 0.9) # Increase chance by 20% per bad streak, maxing at 90%
         result = random.random()
         if result < adjusted_chance:
             LuckSystem.bad_luck_streak = 0  # reset on success
@@ -74,7 +73,7 @@ class LuckSystem:
             LuckSystem.bad_luck_streak += 1
             return False
 
-def show_luck_meter():
+def show_luck_meter(): #doesn't quite work how I want it to yet, will fix in a later version
     attempts = LuckSystem.bad_luck_streak
     chance = min(0.3 + 0.15 * attempts, 0.9)
     meter_blocks = int(chance * 10)
